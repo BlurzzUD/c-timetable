@@ -6,7 +6,7 @@ A native Windows 10/11 timetable viewer and downloader for [Pollák EduPage](htt
 
 Double-click `ctimetable.exe`. The application reads `data/timetables.json` next to the executable, so it works offline after a successful download. Use the search box to filter classes, select a class, and click a lesson to read its details. Parallel groups remain separate lessons. The grid scrolls when the window is small. Use **Refresh** to fetch the latest published regular timetable in the background.
 
-Data and logs are stored next to the executable. Keep the executable, `data` folder, and `logs` folder in a writable directory. The supplied location is `H:\projects\ctimetable`.
+Data and logs are stored next to the executable. Keep the executable, `data` folder, and `logs` folder in a writable directory. 
 
 ## Rebuild
 
