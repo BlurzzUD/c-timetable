@@ -1,0 +1,15 @@
+PASS class 9.A: 66 records
+PASS class 9.B: 58 records
+PASS class 10.A: 49 records
+PASS class 10.B: 61 records
+PASS class 11.A: 75 records
+PASS class 11.B: 63 records
+PASS class 12.A: 61 records
+PASS class 12.B: 77 records
+PASS class 13.A: 69 records
+PASS class 13.B: 44 records
+PASS class 2/14 T: 5 records
+PASS strict UTF-8 and JSON: combined + 11 individual class files + diagnostics
+PASS Hungarian Hétfő preserved exactly
+PASS all 11 public classes, 496 source cards, 628 class/day records (627 scheduled, 1 unplaced)
+PASS independent source mapping, all subjects/teacher/room/group references, masks, periods, durations and end times

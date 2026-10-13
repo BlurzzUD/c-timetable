@@ -1,0 +1,47 @@
+/* Synthetic variants of real source entities test uncommon extraction features. */
+static Json *source_table(Json *root, const char *name) {
+    const Json *tables=json_get(json_get(json_get(root,"r"),"dbiAccessorRes"),"tables"); size_t i;
+    if(!tables || tables->type!=JSON_ARRAY) return NULL;
+    for(i=0;i<tables->count;++i) { const char *id=json_string(json_get(tables->items[i],"id")); if(id && !strcmp(id,name)) return (Json*)json_get(tables->items[i],"data_rows"); }
+    return NULL;
+}
+static int replace_string(Json *object,const char *key,const char *value) {
+    size_t i; Json *s=json_text(value); if(!s) return 0;
+    for(i=0;i<object->count;++i) if(!strcmp(object->keys[i],key)) { json_free(object->items[i]); object->items[i]=s; return 1; }
+    json_free(s); return 0;
+}
+static int extraction_variant_tests(const wchar_t *base) {
+    wchar_t path[32768], error[1024]; char *raw=NULL,*metadata=NULL,*variant=NULL; char parse_error[256];
+    Json *root=NULL,*cards,*days,*weeks,*teachers,*rooms,*lessons,*card,*lesson=NULL,*entry,*ids; TTData *data=NULL;
+    size_t i,c,l; const char *lessonid,*cardid; int matched=0,ok=0;
+    swprintf_s(path,32768,L"%ls\\inspection\\regular_data.json",base); raw=read_utf8(path);
+    swprintf_s(path,32768,L"%ls\\inspection\\viewer_data.json",base); metadata=read_utf8(path);
+    if(!raw||!metadata) {ok=1;goto done;}
+    root=json_parse(raw,parse_error,sizeof(parse_error)); if(!root) goto done;
+    cards=source_table(root,"cards");days=source_table(root,"days");weeks=source_table(root,"weeks");teachers=source_table(root,"teachers");rooms=source_table(root,"classrooms");lessons=source_table(root,"lessons");
+    if(!cards||!cards->count||!days||days->count!=5||!weeks||weeks->count!=1||!teachers||teachers->count<2||!rooms||rooms->count<2||!lessons) {app_log(base,L"Variant fixture assumptions changed; update development tests.");goto done;}
+    card=cards->items[0]; lessonid=json_string(json_get(card,"lessonid"));cardid=json_string(json_get(card,"id"));
+    for(i=0;i<lessons->count;i++) if(!strcmp(json_string(json_get(lessons->items[i],"id")),lessonid)) lesson=lessons->items[i];
+    if(!lesson)goto done;
+    entry=json_new(JSON_OBJECT); if(!entry||!json_add(entry,"id",json_text("test-saturday"))||!json_add(entry,"name",json_text("Szombat"))||!json_add(entry,"short",json_text("Szo"))||!json_add(days,NULL,entry))goto done;
+    entry=json_new(JSON_OBJECT); if(!entry||!json_add(entry,"id",json_text("test-week-B"))||!json_add(entry,"name",json_text("Hét B"))||!json_add(entry,"short",json_text("B"))||!json_add(weeks,NULL,entry))goto done;
+    for(i=0;i<cards->count;i++) {
+        Json *v=cards->items[i];const char *dm=json_string(json_get(v,"days")),*wm=json_string(json_get(v,"weeks")); char extended[64];
+        if(dm&&*dm) {sprintf_s(extended,sizeof(extended),"%s%c",dm,i==0?'1':'0');if(!replace_string(v,"days",extended))goto done;}
+        if(wm&&*wm) {sprintf_s(extended,sizeof(extended),"%s0",wm);if(!replace_string(v,"weeks",i==0?"01":extended))goto done;}
+    }
+    ids=(Json*)json_get(lesson,"teacherids");if(!json_add(ids,NULL,json_clone(json_get(teachers->items[1],"id"))))goto done;
+    ids=(Json*)json_get(card,"classroomids");if(!json_add(ids,NULL,json_clone(json_get(rooms->items[1],"id"))))goto done;
+    variant=json_write(root); if(!variant||!tt_extract(variant,metadata,&data,error,1024)) {app_log(base,error);goto done;}
+    for(c=0;c<data->class_count;c++)for(l=0;l<data->classes[c].lesson_count;l++) {
+        const TTLesson *v=&data->classes[c].lessons[l];
+        if(!strcmp(v->card_id,cardid)) {
+            if(!v->teacher||!strstr(v->teacher," / ")||!v->room||!strstr(v->room," / ")||!v->week||strcmp(v->week,"Hét B")||v->duration!=2||!v->end||strcmp(v->end,"11:30"))goto done;
+            if(v->day_index==5&&v->day&&!strcmp(v->day,"Szombat"))matched++;
+        }
+    }
+    ok=matched==(int)json_get(lesson,"classids")->count;
+    if(ok)app_log(base,L"PASS: synthetic source variant preserved Saturday, week B, multiple teachers, multiple rooms and multi-period end time.");
+done:
+    if(!ok)app_log(base,L"FAIL: synthetic extraction variant.");tt_free(data);json_free(root);free(raw);free(metadata);free(variant);return ok;
+}

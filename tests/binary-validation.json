@@ -1,0 +1,16 @@
+{
+  "path": "H:\\projects\\ctimetable\\ctimetable.exe",
+  "bytes": 284160,
+  "pe_signature": 17744,
+  "machine": "0x8664",
+  "optional_header_magic": "0x020B",
+  "windows_gui_subsystem": true,
+  "clr_descriptor_rva": 0,
+  "common_controls_v6": true,
+  "per_monitor_v2": true,
+  "as_invoker": true,
+  "sha256": "5DABDA5A8BA08B97E75A854EF60624504605763D03ECC9F1D0456EA8D59BA638",
+  "compiler": "MSVC 19.51.36256 x64",
+  "warnings": 0,
+  "build_log": "logs\\build.log"
+}

@@ -1,0 +1,2 @@
+WM_NCCREATE return TRUE: caption length 0
+WM_NCCREATE DefWindowProc: caption length 16

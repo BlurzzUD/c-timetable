@@ -1,0 +1,15 @@
+Observed https://pollak.edupage.org/timetable/ class dropdown on 2026-10-13 (public, unauthenticated):
+10. A
+10. B
+11. A
+11. B
+12. A
+12. B
+13. A
+13. B
+2/14. T
+9.A
+9.B
+
+Count: 11. Regular timetable JSON uses slightly different spacing/punctuation: 10.A, 10.B, ... and 2/14 T. The class IDs and class membership are obtained from the public relational timetable response, not hardcoded in application code.
+Current public regular timetable metadata: default_num 80; valid from 2026-09-21; title Órarend 2026_2027 23.1 OK 1.0 (2026. 09. 21-?).

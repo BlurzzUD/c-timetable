@@ -1,0 +1,101 @@
+{
+  "discovered_classes": 11,
+  "lesson_definitions": 322,
+  "source_cards": 496,
+  "days": 5,
+  "scheduled_class_day_records": 627,
+  "unplaced_class_records": 1,
+  "total_records": 628,
+  "missing_references": [],
+  "classes": [
+    {
+      "Id": "-47",
+      "Name": "9.A",
+      "Scheduled": 66,
+      "Unplaced": 0,
+      "Records": 66
+    },
+    {
+      "Id": "-48",
+      "Name": "9.B",
+      "Scheduled": 58,
+      "Unplaced": 0,
+      "Records": 58
+    },
+    {
+      "Id": "-36",
+      "Name": "10.A",
+      "Scheduled": 49,
+      "Unplaced": 0,
+      "Records": 49
+    },
+    {
+      "Id": "-37",
+      "Name": "10.B",
+      "Scheduled": 61,
+      "Unplaced": 0,
+      "Records": 61
+    },
+    {
+      "Id": "-38",
+      "Name": "11.A",
+      "Scheduled": 75,
+      "Unplaced": 0,
+      "Records": 75
+    },
+    {
+      "Id": "-39",
+      "Name": "11.B",
+      "Scheduled": 63,
+      "Unplaced": 0,
+      "Records": 63
+    },
+    {
+      "Id": "-40",
+      "Name": "12.A",
+      "Scheduled": 61,
+      "Unplaced": 0,
+      "Records": 61
+    },
+    {
+      "Id": "-41",
+      "Name": "12.B",
+      "Scheduled": 77,
+      "Unplaced": 0,
+      "Records": 77
+    },
+    {
+      "Id": "-42",
+      "Name": "13.A",
+      "Scheduled": 69,
+      "Unplaced": 0,
+      "Records": 69
+    },
+    {
+      "Id": "-43",
+      "Name": "13.B",
+      "Scheduled": 44,
+      "Unplaced": 0,
+      "Records": 44
+    },
+    {
+      "Id": "-49",
+      "Name": "2/14 T",
+      "Scheduled": 4,
+      "Unplaced": 1,
+      "Records": 5
+    }
+  ],
+  "unplaced_cards": [
+    {
+      "cardId": "*496",
+      "lessonId": "*223",
+      "classIds": [
+        "-49"
+      ],
+      "period": "",
+      "days": "",
+      "weeks": ""
+    }
+  ]
+}

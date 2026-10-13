@@ -1,0 +1,22 @@
+2026-10-13T17:16:20Z Starting public timetable refresh.
+2026-10-13T17:16:22Z Refresh succeeded: 11 classes, 628 lesson records, 496 source cards.
+2026-10-13T17:16:38Z Starting expected-failure network test.
+2026-10-13T17:16:38Z EduPage returned HTTP 404. The public timetable may be unavailable or require sign-in.
+2026-10-13T17:22:38Z PASS: 18 malformed JSON cases rejected; 8 valid/Unicode cases round-tripped.
+2026-10-13T17:22:38Z PASS: cached JSON matches extraction of every class/card/day in the public source fixture.
+2026-10-13T17:22:38Z PASS: synthetic source variant preserved Saturday, week B, multiple teachers, multiple rooms and multi-period end time.
+2026-10-13T17:22:41Z Loaded 11 classes, 628 lesson records, 496 source cards; timetable 80.
+2026-10-13T17:29:32Z GUI startup: show=1, visible=1, window=000000000027031A, title=Pollák — Class Timetables
+2026-10-13T17:35:54Z PASS: 18 malformed JSON cases rejected; 8 valid/Unicode cases round-tripped.
+2026-10-13T17:35:54Z PASS: cached JSON matches extraction of every class/card/day in the public source fixture.
+2026-10-13T17:35:54Z PASS: synthetic source variant preserved Saturday, week B, multiple teachers, multiple rooms and multi-period end time.
+2026-10-13T17:35:55Z Native GUI: every class selected, lesson details, painting/clicks, filtering and resizing passed.
+2026-10-13T17:35:55Z Loaded 11 classes, 628 lesson records, 496 source cards; timetable 80.
+2026-10-13T17:36:39Z Starting public timetable refresh.
+2026-10-13T17:36:41Z Refresh succeeded: 11 classes, 628 lesson records, 496 source cards.
+2026-10-13T17:36:41Z PASS: actual Refresh button handler, disabled duplicate requests, concurrent native painting, message pump, saved result, status and selected class preservation.
+2026-10-13T17:37:08Z Starting expected-failure network test.
+2026-10-13T17:37:09Z EduPage returned HTTP 404. The public timetable may be unavailable or require sign-in.
+2026-10-13T17:37:09Z PASS: deliberate request failure reported without saving timetable data.
+2026-10-13T17:37:09Z Loaded 11 classes, 628 lesson records, 496 source cards; timetable 80.
+2026-10-13T17:38:11Z GUI startup: show=1, visible=1, window=0000000000560668, title=Pollák — Class Timetables
